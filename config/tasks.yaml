@@ -1,0 +1,48 @@
+## config/tasks.yaml
+tasks:
+  - name: "research_task"
+    agent: "researcher"
+    description: |
+      1. Search for the specified number of recent, reputable resources on the topic.
+      2. For each, extract headline, URL, and a 2‑3 sentence summary.
+    expected_output: |
+      A JSON array of objects, each with keys:
+        - title (str)
+        - url (str)
+        - summary (str)
+
+  - name: "write_draft_1"
+    agent: "writer_1"
+    description: |
+      Use the research_task outputs and user guidance (tone, audience_level, word_count, additional_instructions)
+      to produce a first draft formatted for LinkedIn.
+    expected_output: |
+      The full article draft as a Markdown‑formatted string.
+    depends_on: ["research_task"]
+
+  - name: "write_draft_2"
+    agent: "writer_2"
+    description: "Same as write_draft_1 but with the writer_2 style"
+    expected_output: |
+      The full article draft as a Markdown‑formatted string.
+    depends_on: ["research_task"]
+
+  - name: "write_draft_3"
+    agent: "writer_3"
+    description: "Same as write_draft_1 but with the writer_3 style"
+    expected_output: |
+      The full article draft as a Markdown‑formatted string.
+    depends_on: ["research_task"]
+
+  - name: "compile_and_proofread"
+    agent: "editor"
+    description: |
+      1. Compare drafts from write_draft_1, write_draft_2, write_draft_3.
+      2. Select and merge the strongest sections into a cohesive article.
+      3. Proofread for grammar, clarity, and flow.
+      4. Fact‑check any claims against original resource URLs.
+    expected_output: |
+      The full article polished and ready to be posted on LinkedIn.
+    depends_on: ["write_draft_1", "write_draft_2", "write_draft_3"]
+    outputs:
+      - final_article: polished article text ready for LinkedIn

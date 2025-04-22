@@ -1,0 +1,8 @@
+crewai>=0.1.0
+streamlit>=1.19.0
+PyYAML>=5.4
+python-decouple>=3.5
+langchain-openai>=0.1.4
+langchain>=0.0.266
+openai>=0.27.0
+duckduckgo-search>=2.6.0
