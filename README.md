@@ -63,11 +63,11 @@ A Streamlit‑powered interface that leverages CrewAI agents to research a topic
 
 All agent behaviors and task definitions live under `config/`:
 
-    `config/agents.yaml`
-    Defines each agent’s role, LLM model, temperature, attached tools, and rate limits.
+- `config/agents.yaml`
+  Defines each agent’s role, LLM model, temperature, attached tools, and rate limits.
 
-    `config/tasks.yaml`
-    Defines each task’s name, description, agent assignment, dependencies, and expected output schema.
+- `config/tasks.yaml`
+  Defines each task’s name, description, agent assignment, dependencies, and expected output schema.
 
 You can adjust temperature, add or remove agents, tweak prompts, or update rate limits without touching any Python code.
 
@@ -116,14 +116,14 @@ Then open http://localhost:8501 in your browser.
 
 ## 🔧 Troubleshooting
 
-  **Tool import errors**
+  - **Tool import errors**
   `ImportError: cannot import name 'WebsiteSearchTool'`
   Ensure you're importing `crewai_tools`, not `crewai.tools`.
 
-  **YAML parse errors**
+  - **YAML parse errors**
   Watch your indentation—each task field (name, agent, description, expected_output) must be indented 4 spaces under its list item.
 
-  **502 on Replit**
+  - **502 on Replit**
   Make sure Streamlit binds to `0.0.0.0` and the `$PORT` via your `.replit` or `.streamlit/config.toml`.
 
 ---
